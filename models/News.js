@@ -14,6 +14,8 @@ class News {
     this.newsWebImageURL = data.news_web_image_uri || '';
     this.newsWebMovieURL = '';
     this.newsEasyVoiceURL = '';
+    this.newsEasyWebURL =
+      `${NHK_URL}/news/easy/${this.newsId}/${this.newsId}.html`;
 
     if (data.news_easy_voice_uri) {
       let match = data.news_easy_voice_uri.match(/(\w+)\.mp3/);
