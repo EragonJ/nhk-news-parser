@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/EragonJ/nhk-news-parser/issues"
   },
-  "homepage": "https://github.com/EragonJ/nhk-news-parser#readme"
+  "homepage": "https://github.com/EragonJ/nhk-news-parser#readme",
+  "dependencies": {
+    "request": "^2.79.0"
+  }
 }
