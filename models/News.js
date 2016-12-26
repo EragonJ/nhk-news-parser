@@ -5,6 +5,7 @@ const MOVIE_URL =
 
 class News {
   constructor(data) {
+    this.type = 'easyNews';
     this.date = +(Date(data.news_prearranged_time)) || Date.now();
     this.priority = data.news_priority_number || '0';
     this.newsId = data.news_id || 'No id';
