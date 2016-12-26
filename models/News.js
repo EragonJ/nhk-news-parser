@@ -8,6 +8,7 @@ class News {
     this.type = 'easyNews';
     this.date = +(Date(data.news_prearranged_time)) || Date.now();
     this.priority = data.news_priority_number || '0';
+    this.uniqueId = '';
     this.newsId = data.news_id || 'No id';
     this.title = data.title || 'No title';
     this.titleWithRuby = data.title_with_ruby || 'No title';
