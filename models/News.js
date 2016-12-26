@@ -10,6 +10,8 @@ class News {
     this.newsId = data.news_id || 'No id';
     this.title = data.title || 'No title';
     this.titleWithRuby = data.title_with_ruby || 'No title';
+    this.content = '';
+    this.contentWithRuby = '';
     this.newsWebURL = data.news_web_url || NHK_URL;
     this.newsWebImageURL = data.news_web_image_uri || '';
     this.newsWebMovieURL = '';

@@ -12,9 +12,14 @@ module.exports = (url) => {
           let $ = cheerio.load(html);
           let title = $('#newstitle h2').html();
           let content = $('#newsarticle').html();
+
+          // TODO
+          // filter out ruby in title / content later
           resolve({
             title: title,
-            content: content
+            titleWithRuby: title,
+            content: content,
+            contentWithRuby: content
           });
         }
         else {
