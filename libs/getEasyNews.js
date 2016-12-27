@@ -1,11 +1,23 @@
 const request = require('request');
 const cheerio = require('cheerio');
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
 
-function removeFurigana(html) {
-  html = html || '';
+function removeFurigana(html = '') {
   html = html.replace(/<rt>.*?<\/rt>/g, '');
   html = html.replace(/(<ruby>|<\/ruby>)/g, '');
   return html;
+}
+
+function removeUselessTags(html = '') {
+  html = html.replace(/<(?!(ruby|rt|\/ruby|\/rt)).*?>/g, '');
+  return html;
+}
+
+function toText(html) {
+  let text = entities.decode(html);
+  text = text.replace(/\n/g, '');
+  return text;
 }
 
 module.exports = (url) => {
@@ -20,17 +32,15 @@ module.exports = (url) => {
           let rawTitle  = $('#newstitle h2').html();
           rawTitle = rawTitle.trim();
 
-          let titleWithFurigana = rawTitle;
-          let title = removeFurigana(rawTitle);
+          let titleWithFurigana = toText(removeUselessTags(rawTitle));
+          let title = toText(removeUselessTags(removeFurigana(rawTitle)));
 
           let rawContent = $('#newsarticle').html();
           rawContent = rawContent.trim();
 
-          let contentWithFurigana = rawContent;
-          let content = removeFurigana(rawContent);
+          let contentWithFurigana = toText(removeUselessTags(rawContent));
+          let content = toText(removeUselessTags(removeFurigana(rawContent)));
 
-          // TODO
-          // filter out ruby in title / content later
           resolve({
             title: title,
             titleWithFurigana: titleWithFurigana,
