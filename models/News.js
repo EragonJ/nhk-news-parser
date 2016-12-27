@@ -29,12 +29,8 @@ class News {
     }
 
     if (data.news_easy_voice_uri) {
-      let match = data.news_easy_voice_uri.match(/(\w+)\.mp3/);
-      if (match) {
-        let filename = match[0];
-        this.newsEasyVoiceURL =
-          `${NHK_URL}/news/easy/${filename}/${data.news_easy_voice_uri}`;
-      }
+      this.newsEasyVoiceURL =
+        `${NHK_URL}/news/easy/${this.newsId}/${data.news_easy_voice_uri}`;
     }
 
     if (data.news_web_movie_uri) {
