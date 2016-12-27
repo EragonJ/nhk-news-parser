@@ -1,3 +1,4 @@
+const moment = require('moment');
 const NHK_URL = 'http://www3.nhk.or.jp';
 const MOVIE_URL =
   'http://www3.nhk.or.jp/news/easy/swf/news_player4.swf?' +
@@ -6,20 +7,26 @@ const MOVIE_URL =
 class News {
   constructor(data) {
     this.type = 'easyNews';
-    this.date = +(Date(data.news_prearranged_time)) || Date.now();
+    this.date = Date.now();
     this.priority = data.news_priority_number || '0';
     this.uniqueId = '';
     this.newsId = data.news_id || 'No id';
     this.title = data.title || 'No title';
-    this.titleWithRuby = data.title_with_ruby || 'No title';
+    this.titleWithFurigana = data.title_with_ruby || 'No title';
     this.content = '';
-    this.contentWithRuby = '';
+    this.contentWithFurigana = '';
     this.newsWebURL = data.news_web_url || NHK_URL;
     this.newsWebImageURL = data.news_web_image_uri || '';
     this.newsWebMovieURL = '';
     this.newsEasyVoiceURL = '';
     this.newsEasyWebURL =
       `${NHK_URL}/news/easy/${this.newsId}/${this.newsId}.html`;
+
+    if (data.news_prearranged_time) {
+      if (moment(data.news_prearranged_time).isValid()) {
+        this.date = +moment(data.news_prearranged_time);
+      }
+    }
 
     if (data.news_easy_voice_uri) {
       let match = data.news_easy_voice_uri.match(/(\w+)\.mp3/);
