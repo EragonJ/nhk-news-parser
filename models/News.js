@@ -16,9 +16,13 @@ class News {
     this.content = '';
     this.contentWithFurigana = '';
     this.newsWebURL = data.news_web_url || NHK_URL;
-    this.newsWebImageURL = data.news_web_image_uri || '';
+    this.newsWebImageURL = '';
     this.newsWebMovieURL = '';
+
     this.newsEasyVoiceURL = '';
+    this.newsEasyImageURL = '';
+    this.newsEasyMovieURL = '';
+
     this.newsEasyWebURL =
       `${NHK_URL}/news/easy/${this.newsId}/${this.newsId}.html`;
 
@@ -28,13 +32,28 @@ class News {
       }
     }
 
-    if (data.news_easy_voice_uri) {
-      this.newsEasyVoiceURL =
-        `${NHK_URL}/news/easy/${this.newsId}/${data.news_easy_voice_uri}`;
+    if (data.has_news_web_image) {
+      this.newsWebImageURL = data.news_web_image_uri;
     }
 
-    if (data.news_web_movie_uri) {
+    if (data.has_news_web_movie) {
       this.newsWebMovieURL = `${MOVIE_URL}${data.news_web_movie_uri}`;
+    }
+
+    if (data.has_news_easy_image) {
+      this.newsEasyImageURL =
+        `${NHK_URL}/news/easy/${this.newsId}/${data.news_easy_image_uri}`;
+    }
+
+    // Note
+    // Need to check this later because didn't find anything related yet
+    if (data.has_news_easy_movie) {
+      this.newsEasyMovieURL = `${MOVIE_URL}${data.news_easy_movie_uri}`;
+    }
+
+    if (data.has_news_easy_voice) {
+      this.newsEasyVoiceURL =
+        `${NHK_URL}/news/easy/${this.newsId}/${data.news_easy_voice_uri}`;
     }
   }
 }
