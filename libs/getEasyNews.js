@@ -16,7 +16,8 @@ function removeUselessTags(html = '') {
 
 function toText(html) {
   let text = entities.decode(html);
-  text = text.replace(/\n/g, '');
+  text = text.trim();
+  text = text.replace(/\n/g, '<br/>');
   return text;
 }
 
