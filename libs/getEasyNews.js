@@ -10,7 +10,9 @@ function removeFurigana(html = '') {
 }
 
 function removeUselessTags(html = '') {
-  html = html.replace(/<(?!(ruby|rt|\/ruby|\/rt)).*?>/g, '');
+  html = html.replace(/<(?!(ruby|rt|\/ruby|\/rt|a|\/a|span|\/span)).*?>/g, '');
+  html = html.replace(/<a[^>]*>/g, '<a href="#">');
+  html = html.replace(/<span[^>]*>/g, '<span>');
   return html;
 }
 
