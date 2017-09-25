@@ -1,7 +1,7 @@
 {
   "name": "@eragonj/nhk-news-parser",
   "version": "0.0.1",
-  "description": "As title",
+  "description": "This is a parser for NHK easy news",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

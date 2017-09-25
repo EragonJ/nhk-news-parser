@@ -1,3 +1,3 @@
 # nhk-news-parser
 
-As title
+This is a parser for NHK easy news
