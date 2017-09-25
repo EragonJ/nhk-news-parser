@@ -1,5 +1,5 @@
 {
-  "name": "nhk-news-parser",
+  "name": "@eragonj/nhk-news-parser",
   "version": "0.0.1",
   "description": "As title",
   "main": "index.js",
