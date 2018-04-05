@@ -32,13 +32,13 @@ module.exports = (url) => {
       request(url, (error, response, html) => {
         if (!error && response.statusCode == 200) {
           let $ = cheerio.load(html);
-          let rawTitle  = $('#newstitle h2').html();
+          let rawTitle  = $('.article-main__title').html();
           rawTitle = rawTitle.trim();
 
           let titleWithFurigana = toText(removeUselessTags(rawTitle));
           let title = toText(removeUselessTags(removeFurigana(rawTitle)));
 
-          let rawContent = $('#newsarticle').html();
+          let rawContent = $('#js-article-body').html();
           rawContent = rawContent.trim();
 
           let contentWithFurigana = toText(removeUselessTags(rawContent));
