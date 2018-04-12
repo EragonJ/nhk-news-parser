@@ -1,5 +1,6 @@
 const moment = require('moment');
 const NHK_URL = 'http://www3.nhk.or.jp';
+const VOICE_URL = 'https://nhks-vh.akamaihd.net/i/news/easy';
 const MOVIE_URL =
   'http://www3.nhk.or.jp/news/easy/swf/news_player4.swf?' +
   'fms=rtmp://flv.nhk.or.jp/ondemand/flv/news/&movie=';
@@ -53,7 +54,7 @@ class News {
 
     if (data.has_news_easy_voice) {
       this.newsEasyVoiceURL =
-        `${NHK_URL}/news/easy/${this.newsId}/${data.news_easy_voice_uri}`;
+        `${VOICE_URL}/${this.newsId}.mp4/master.m3u8`;
     }
   }
 }

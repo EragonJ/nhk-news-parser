@@ -2,7 +2,7 @@ var Parser = require('./');
 
 // check getNewsList
 Parser.getNewsList().then(function(allNews) {
-  console.log(allNews);
+  console.log(allNews[0]);
   if (allNews) {
     var news = allNews[0];
 
